@@ -30,7 +30,7 @@ public class HomeController {
         return "testing";
     }
 
-    @RequestMapping("listCustomers")
+    @RequestMapping("/listCustomers") // case sensitive
     public ModelAndView listCustomer() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();

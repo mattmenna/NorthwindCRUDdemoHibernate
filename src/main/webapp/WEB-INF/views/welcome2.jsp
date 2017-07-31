@@ -12,6 +12,19 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
     <title>Insert title here</title></head>
+<body>
+<form action="serachByCity" method="get" role="form">
+    <legend>Form Title</legend>
+
+    <div class="form-group">
+        <label for=""></label>
+        <input type="text" class="form-control" name="" id="" placeholder="Input...">
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 <table border=1>
     <c:forEach var="myvar" items="${cList}">
     <tr>
