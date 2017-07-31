@@ -3,9 +3,11 @@ package com.company.controller;
 import com.test.models.CustomersEntity;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -39,5 +41,17 @@ public class HomeController {
         Criteria c = selectCustomers.createCriteria(CustomersEntity.class);
         ArrayList<CustomersEntity> customerList = (ArrayList<CustomersEntity>) c.list();
         return new ModelAndView("welcome2", "cList", customerList);
+    }
+    @RequestMapping("/searchByCity")
+    public ModelAndView searchCity(@RequestParam("city") String cityName){
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session selectCustomers = sessionFact.openSession();
+        selectCustomers.beginTransaction();
+        Criteria c = selectCustomers.createCriteria(CustomersEntity.class);
+        c.add(Restrictions.like("city", "%" + cityName + "%"));
+
+        ArrayList<CustomersEntity> customerList = (ArrayList<CustomersEntity>) c.list();
+        return new ModelAndView("welcome2","cList",customerList);
     }
 }

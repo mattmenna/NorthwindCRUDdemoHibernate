@@ -13,23 +13,16 @@
     <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
     <title>Insert title here</title></head>
 <body>
-<form action="serachByCity" method="get" role="form">
-    <legend>Form Title</legend>
-
-    <div class="form-group">
-        <label for=""></label>
-        <input type="text" class="form-control" name="" id="" placeholder="Input...">
-    </div>
-
-
-
-    <button type="submit" class="btn btn-primary">Submit</button>
+<form action="searchByCity" method="get">
+    <input type="text" name="city">
+    <input type="submit" name="Search">
 </form>
 <table border=1>
     <c:forEach var="myvar" items="${cList}">
-    <tr>
-        <td> ${myvar.customerId}</td>
-        <td> ${myvar.companyName}</td>
-    </tr>
-</c:forEach></table>
-</body> </html>
+        <tr>
+            <td> ${myvar.customerId}</td>
+            <td> ${myvar.companyName}</td>
+        </tr>
+    </c:forEach></table>
+</body>
+</html>
